@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+  devcontainer:
+    container_name: devcontainer
+    image: ghcr.io/ludeeus/devcontainer/integration:stable
+    command: sleep infinity
+    volumes:
+      - .:/workspaces/sensorinterface
+    ports:
+      - 9123:8123
+    networks:
+      sensorif-dev:
+        aliases:
+          - devenv
+  myalpine:
+    image: alpine
+    container_name: stub
+    command: sleep infinity
+    networks:
+      sensorif-dev:
+        aliases:
+          - alpine
+
+networks:
+  sensorif-dev:
+    name: sensorif-dev

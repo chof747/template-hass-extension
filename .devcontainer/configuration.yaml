@@ -1,0 +1,65 @@
+default_config:
+logger:
+  default: info
+  logs:
+    custom_components.sensorinterface: debug
+
+group:
+  living_room:
+    entities:
+      - sensor.temp1
+      - sensor.humd1
+
+  sleeping_room:
+    entities:
+      - sensor.temp2
+      - sensor.humd2
+
+sensor:
+  - platform: random
+    name: temp1
+    minimum: 23
+    maximum: 29
+    unit_of_measurement: "°C"
+  - platform: random
+    name: temp2
+    minimum: 23
+    maximum: 29
+    unit_of_measurement: "°C"
+  - platform: random
+    name: humd1
+    minimum: 38
+    maximum: 56
+    unit_of_measurement: "rel. %"
+  - platform: random
+    name: humd2
+    minimum: 41
+    maximum: 59
+    unit_of_measurement: "rel. %"
+
+homeassistant:
+  customize:
+    sensor.temp1:
+      friendly_name: Temperature Living Room
+      icon: mdi:thermometer
+      device_class: "temperature"
+    sensor.temp2:
+      friendly_name: Temperature Sleeping Room
+      icon: mdi:thermometer
+      device_class: "temperature"
+    sensor.humd1:
+      friendly_name: Humidity Living Room
+      icon: mdi:water-percent
+      device_class: "humidity"
+    sensor.humd2:
+      friendly_name: Humidity Sleeping Room
+      icon: mdi:water-percent
+      device_class: "humidity"
+    group.living_room:
+      friendly_name: Living Room
+    group.sleeping_room:
+      friendly_name: Sleeping Room
+
+
+debugpy:
+
